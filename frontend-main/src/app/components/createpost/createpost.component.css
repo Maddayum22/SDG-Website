@@ -1,0 +1,205 @@
+#outerContainer {
+    display: flex;
+    justify-content: center;
+    
+    margin-bottom: 10rem;
+    background-image: url(../../../assets/background.jpg);
+    border-radius: 20px;
+    height: 700px;
+}
+
+#createPost {
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    margin-bottom: 10rem;
+    margin-top: 2rem;
+    /* justify-content: space-around; */
+    /* position: fixed; */
+    /* margin-top: 20px; */
+    /* top: 50%; */
+    /* left: 50%; */
+    /* transform: translate(-50%, -50%); */
+}
+
+#createPostTitle {
+    filter: drop-shadow(0px 10px 4px rgba(0, 0, 0, 0.5));
+    margin-bottom: 1rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#createPostTitle h2 {
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    background-color: #FF3A21;
+    padding: 1rem 18rem;
+    border-radius: 1rem;
+}
+
+#topSection {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #EBEBEB;
+    padding: 1rem;
+}
+
+#bottomSection {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+}
+
+#bottomRight {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+    padding: 1rem;
+}
+
+#createPostForm {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+label {
+    width: 90%;
+    display: inline-block;
+    background-color: #EBEBEB;
+    border-radius: 0.5rem 0.5rem 0 0;
+    padding: 0.5rem
+}
+
+#title, #postTitle {
+    width: 100%;
+}
+
+#descriptionField {
+    min-width: 50%;
+    padding: 1rem;
+}
+
+#titleField {
+    min-width: 80%;
+    padding-bottom: 1rem;
+    float: right;
+}
+
+#expertiseField label {
+   background-color: #4E7B45;
+   color: #EBEBEB;
+   font-weight: 500;
+   margin-left: 30px;
+}
+
+#expertiseField select {
+    margin-left: 30px;
+}
+
+#sdgField label {
+    background-color: #D3A029;
+    color: #EBEBEB;
+    font-weight: 500;
+ }
+
+input, select {
+    width: 90%;
+    background-color: #F4F4F4;
+    padding: 0.8rem 0.5rem;
+    border: none;
+}
+
+#createPostButton {
+    color: #fff;
+    background-color: #5DBA45;
+    padding: 1rem;
+    font-size: large;
+    border-radius: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+#createPostButton:hover {
+    background-color: #4D9B3A;
+}
+
+#createPostButton:disabled {
+    opacity: 0.5;
+    cursor: default;
+    background-color: #5DBA45;
+}
+
+.errorCheck {
+    position: absolute;
+    right: 1rem;
+    bottom: 1.2rem;
+    padding: 0.5rem;
+    color: red;
+    font-size: small;
+}
+
+#descriptionField textarea {
+    border-radius: 0px 0px 10px 10px;
+    width: 100%;
+    height: 200px;
+    max-height: 300px;
+    resize: vertical;
+    padding: 1rem;
+}
+
+#descriptionField label {
+    width: 100%;
+}
+
+#quizButton {
+    color: #fff;
+    background-color: #5DBA45;
+    padding: 1rem;
+    font-size: medium;
+    border-radius: 2rem;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+}
+
+#userInfo {
+    margin-left: 10px;
+    width: 15%;
+    display: flex;
+    flex-direction: row;
+}
+
+#userInfo h2 {
+    font-size: 1rem; 
+    margin: 0;
+}
+
+#userInfo h3 {
+    color: #183568;
+    font-weight: 300;
+    font-size: 0.8rem;
+    margin: 0;
+}
+
+#iconPlaceholder {
+    width: 70%;
+}
+
+#userDetails {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

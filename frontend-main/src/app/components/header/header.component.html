@@ -1,0 +1,31 @@
+<nav class="nav-container">
+  <section class="nav-logos">
+    <a routerLink="/">
+      <section class="nav-logo-1">
+        <img src="./assets/sdg_logo.png" alt="sdg logo" />
+      </section>
+      <section class="nav-logo-2">
+        <img src="./assets/hva_logo.png" alt="hva logo" />
+      </section>
+    </a>
+  </section>
+  <section class="nav-items">
+    <a id="admin-dashboard" *ngIf="userType === 'admin'" routerLink="/admin" routerLinkActive="active"
+      >Admin Dashboard</a
+    >
+    <a id="create-post" routerLink="/post" routerLinkActive="active">Create Post</a>
+    <a routerLink="/quiz/" routerLinkActive="active">Take The Quiz!</a>
+    <a routerLink="/sdginfo" routerLinkActive="active">SDG information</a>
+    <a routerLink="/contact" routerLinkActive="active">Contact Us</a>
+    <a id="login" *ngIf="!loggedIn" routerLink="/login" routerLinkActive="active">Login</a>
+    <a id="register" *ngIf="!loggedIn" routerLink="/register" routerLinkActive="active">Register</a>
+    <a
+      *ngIf="loggedIn"
+      (click)="account()"
+      routerLink="/users/{{ userId }}/account"
+      routerLinkActive="active"
+      >Account</a
+    >
+    <a id="logout" *ngIf="loggedIn" (click)="logout()">Logout</a>
+  </section>
+</nav>

@@ -1,0 +1,105 @@
+<!--Author: Rowen Zaal-->
+<form
+  [formGroup]="registerForm"
+  (ngSubmit)="onSubmit()"
+  id="registerForm"
+  novalidate
+>
+  <section id="row1">
+    <section id="usernameField">
+      <label for="username">Username* </label>
+      <section
+        class="errorCheck"
+        *ngIf="!username?.valid && (username?.dirty || username?.touched)"
+      >
+        Invalid username.
+      </section>
+      <input id="username" type="text" formControlName="username" />
+    </section>
+
+    <section id="expertiseField">
+      <label for="areaOfExpertise">Area of Expertise* </label>
+      <select
+        formControlName="areaOfExpertise"
+        id="areaOfExpertise"
+        type="text"
+      >
+        <option
+          *ngFor="let expertise of expertises; let itemIndex = index"
+          [selected]="itemIndex == 0"
+          [disabled]="itemIndex == 0"
+        >
+          {{ expertise }}
+        </option>
+      </select>
+    </section>
+  </section>
+
+  <section id="row2">
+    <section id="emailField">
+      <label for="email">Email* </label>
+      <section
+        class="errorCheck"
+        *ngIf="!email?.valid && (email?.dirty || email?.touched)"
+      >
+        Email is invalid.
+      </section>
+      <input id="email" type="email" formControlName="email" />
+    </section>
+  </section>
+
+  <section id="row3">
+    <section id="passwordField">
+      <label for="password">Password* </label>
+      <input
+        id="password"
+        [type]="[passwordClicked ? 'text' : 'password']"
+        formControlName="password"
+        #passwordToggle
+        pattern="[^\s]*"
+      />
+      <i
+        [ngClass]="[passwordClicked ? 'far fa-eye' : 'far fa-eye-slash']"
+        class="togglePassword"
+        (click)="togglePassword()"
+      ></i>
+    </section>
+
+    <section id="repeatPasswordField">
+      <label for="repeatPassword">Repeat password* </label>
+      <section
+        class="errorCheck"
+        id="repeatPasswordCheck"
+        *ngIf="passwordMatchError"
+      >
+        Password doesn't match.
+      </section>
+      <input
+        id="repeatPassword"
+        [type]="[repeatPasswordClicked ? 'text' : 'password']"
+        formControlName="repeatPassword"
+      />
+      <i
+        [ngClass]="[repeatPasswordClicked ? 'far fa-eye' : 'far fa-eye-slash']"
+        class="togglePassword"
+        id="toggle"
+        (click)="toggleRepeatPassword()"
+      ></i>
+    </section>
+  </section>
+  <section
+    id="passwordCheck"
+    *ngIf="!password?.valid && (password?.dirty || password?.touched)"
+  >
+    <section [hidden]="!password!.errors!['minlength']">
+      Password should be atleast 8 characters long.
+    </section>
+    <section [hidden]="!password!.errors!['pattern']">
+      Password should contain a special character but no whitespaces.
+    </section>
+  </section>
+
+  <button id="registerButton" type="submit" [disabled]="!registerForm.valid">
+    Register
+  </button>
+</form>
