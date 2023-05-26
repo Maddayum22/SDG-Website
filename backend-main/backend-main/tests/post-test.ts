@@ -1,55 +1,59 @@
-import chai, { expect } from "chai";
-import { describe, it } from "mocha";
-import chaiHttp = require("chai-http");
-import sinon from "sinon";
-import { PostBusiness } from "../src/business/models/posts";
-import { PostRepository } from "../src/data/repository-sequelize/posts";
-chai.use(chaiHttp);
+import chai, { assert, expect } from 'chai';
+import { describe, it } from 'mocha';
+import * as tssinon from 'ts-sinon';
+import * as Sinon from 'sinon';
+import { PostBusiness } from '../src/business/models/posts';
+import { PostTestHelper } from './post-test-helper';
+import chaiAsPromised from 'chai-as-promised';
+chai.use(chaiAsPromised);
 
-describe("Post structure integration", () => {
-  it("should return a 200 response when a post is correctly made.", (done) => {
-    let postData = {
-      title: "water use",
-      description: "Lorem ipsum",
-      sdgId: 5,
-      areaOfExpertise: "Technology",
-      userId: 3,
-    };
-    chai
-      .request("http://localhost:3000")
-      .post("/posts/")
-      .send(postData)
-      .end((err, res) => {
-        expect(res).to.have.status(200);
-        done();
-      });
-  });
+describe('postBusiness unit tests', () => {
+    let postHelper = new PostTestHelper();
+    let postBusiness: PostBusiness.Post;
+
+    it('creates a Post object if the input values are valid', () => {
+        postBusiness = new PostBusiness.Post(postHelper.fakePostData());
+        const expectedValue = postHelper.fakePostData();
+
+        expect(postBusiness).to.deep.equal(expectedValue);
+    });
+
+    it('doest not create a Post object if the input values are not valid', () => {
+        expect(() => {
+            postBusiness = new PostBusiness.Post(postHelper.fakePostDataIncorrect());
+        }).to.throw('Invalid post data');
+    });
 });
 
-// describe("PostRepository unit tests", () => {
-//   const createPostStub = sinon.stub(PostRepository.prototype, "createPost");
-//   const getPostsStub = sinon.stub(PostRepository.prototype, "getPosts");
+/**
+ * @author Madelief van Slooten
+ * Post Service unit tests.
+ */
+describe('Post Service integration tests', () => {
+    const sandbox: Sinon.SinonSandbox = tssinon.default.createSandbox();
+    const postHelper = new PostTestHelper();
+    const postService = postHelper.getPostService();
+    const postData = postHelper.fakePostData();
 
-//   let postData: PostBusiness.Post = {
-//     title: "water use",
-//     description: "Lorem ipsum",
-//     sdgId: 5,
-//     areaOfExpertise: "Technology",
-//     userId: 3,
-//   };
+    afterEach(() => {
+        sandbox.restore();
+        tssinon.default.restore();
+    });
 
-//   afterEach(() => {
-//     createPostStub.restore();
-//   });
+    it('should check and create a post and return true if succeeded', async () => {
+        const result = await postService!.create(postData);
+        expect(result).to.be.true;
+    });
 
-//   it("should create a post and return true if succeeded", async () => {
-//     createPostStub.resolves(true);
-//     const postRepository = new PostRepository();
-//     const result = await postRepository.create(postData);
-//     expect(result).to.be.true;
-//   });
+    it('should throw error if post was not correct', async () => {
+        await expect(postService.create(postHelper.fakePostDataIncorrect())).to.be.rejectedWith(
+            Error,
+            'Invalid post data'
+        );
+    });
 
-//   it("should get all post and return a succes status", async () => {
-//     //TODO: To be filled.
-//   });
-// });
+    it('finds all posts and returns an array', async () => {
+        const result = await postService!.findAll();
+        expect(result).to.deep.equal([postData, postData]);
+    });
+});

@@ -1,18 +1,27 @@
-/** @author Madelief van Slooten & Rowen Zaal */ // Post routing
-
 import { Router, Request, Response } from 'express';
-import { Server } from '../../server';
+import { PostController } from '../../controller/posts';
 
-const router: Router = Router();
+export class PostRoutes {
+    public router: Router = Router();
+    private postController: PostController;
 
-/** @author Madelief van Slooten & Rowen Zaal */
-router.post('/posts', (request: Request, response: Response) => {
-    Server.instance.postController.create(request, response);
-});
+    public constructor(postController: PostController) {
+        this.postController = postController;
+        this.setPostRoutes(this.router);
+    }
 
-/** @author Madelief van Slooten & Rowen Zaal */
-router.get('/posts', (request: Request, response: Response) => {
-    Server.instance.postController.findAll(request, response);
-});
+    /**
+     * @author Madelief van Slooten
+     * sets the routes for the post structure.
+     * @param router Router
+     */
+    private setPostRoutes(router: Router): void {
+        router.post('/', (request: Request, response: Response) => {
+            this.postController.create(request, response);
+        });
 
-export default router;
+        router.get('/', (request: Request, response: Response) => {
+            this.postController.findAll(request, response);
+        });
+    }
+}

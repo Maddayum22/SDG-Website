@@ -1,8 +1,8 @@
-import express, { Request, Response } from 'express';
+import express, { Request, Response, Router } from 'express';
+import { URL } from 'url';
 import cookieParser from 'cookie-parser';
 import { User } from './data/models/users';
 
-import loadRoutes from './routing/helpers/load_routes';
 import { Database } from './util/database';
 import { Sessions } from './data/models/sessions';
 import { Post } from './data/models/posts';
@@ -21,6 +21,7 @@ import { UserRepositoryInterface } from './data/models/user-interface';
 import { PostRepositoryInterface } from './data/models/post-interface';
 import { SessionRepositoryInterface } from './data/models/session-interface';
 import { SQLSessionRepository } from './data/repository-sql/sessions';
+import { RouteHandler } from './routing/helpers/route-handler';
 
 /**
  * @author Madelief van Slooten
@@ -29,6 +30,7 @@ import { SQLSessionRepository } from './data/repository-sql/sessions';
 export class Server {
     private static _instance: Server | null = null;
     private app: express.Express;
+    private router: Router;
     private userService: UserService;
     private userRepository: UserRepositoryInterface;
     private postService: PostService;
@@ -52,7 +54,6 @@ export class Server {
     private constructor() {
         this.database = new Database(process.env.DB_TYPE!);
         this.app = express();
-        this.configuration();
 
         if (process.env.DB_TYPE === 'sql') {
             this.userRepository = new SQLUserRepository();
@@ -71,6 +72,24 @@ export class Server {
 
         this.postService = new PostService(this.postRepository);
         this.postController = new PostController(this.postService);
+
+        this.router = Router();
+        this.setRoutes();
+        this.configuration();
+    }
+
+    /**
+     * @author Madelief van Slooten
+     * Uses the route handler to set the router for the app.
+     */
+    private setRoutes(): void {
+        this.router.use(
+            RouteHandler.handleRoutes({
+                postController: this.postController,
+                sessionController: this.sessionController,
+                userController: this.userController,
+            })
+        );
     }
 
     /**
@@ -80,7 +99,7 @@ export class Server {
     private configuration(): void {
         this.setHeaders();
         this.parseOptions();
-        this.setRoutes();
+        this.app.use(this.router);
     }
 
     /**
@@ -89,7 +108,8 @@ export class Server {
      */
     private setHeaders(): void {
         this.app.use(function (_request: Request, response: Response, next) {
-            response.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+            const url = new URL('http://localhost:4200');
+            response.setHeader('Access-Control-Allow-Origin', url.origin);
             response.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
             response.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
             response.setHeader('Access-Control-Allow-Credentials', 'true');
@@ -105,14 +125,6 @@ export class Server {
         this.app.use(express.json());
         this.app.use(express.urlencoded({ extended: true }));
         this.app.use(cookieParser());
-    }
-
-    /**
-     * @author Madelief van Slooten
-     * Loads the routes that sit in their own files for organization.
-     */
-    private setRoutes(): void {
-        loadRoutes(this.app);
     }
 
     /**

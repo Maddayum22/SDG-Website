@@ -27,6 +27,7 @@ export class SessionRepository implements SessionRepositoryInterface {
      * @returns boolean if session is created or not.
      */
     public async startSession(session: SessionInterface): Promise<boolean> {
+        console.log(1);
         try {
             await Sessions.create({
                 sessionID: session.sessionID,

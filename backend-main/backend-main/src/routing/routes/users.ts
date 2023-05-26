@@ -1,30 +1,42 @@
-/** @author Madelief van Slooten, Rowen Zaal & William Nguyen */
-
 import { Router, Request, Response } from 'express';
-import { Server } from '../../server';
-const router: Router = Router();
+import { SessionController } from '../../controller/sessions';
+import { UserController } from '../../controller/users';
 
-// Creates a new user.
-router.post('/users', (request: Request, response: Response) => {
-    Server.instance.userController.addUser(request, response);
-});
+export class UserRoutes {
+    public router: Router = Router();
+    private sessionController: SessionController;
+    private userController: UserController;
 
-router.patch('/users/account/edit/:id', (request: Request, response: Response) => {
-    Server.instance.userController.updateUser(request, response);
-});
+    public constructor(sessionController: SessionController, userController: UserController) {
+        this.sessionController = sessionController;
+        this.userController = userController;
+        this.setUserRoutes(this.router);
+    }
 
-router.get('/users/account/:id', (request: Request, response: Response) => {
-    Server.instance.userController.getUserById(request, response);
-});
+    /**
+     * @author Madelief van Slooten
+     * sets the routes for the user structure.
+     * @param router Router
+     */
+    private setUserRoutes(router: Router): void {
+        router.post('/', (request: Request, response: Response) => {
+            this.userController.addUser(request, response);
+        });
 
-// Retrieve the details of the user, in this case the usertype.
-router.get('/users/:id', (request: Request, response: Response) => {
-    Server.instance.userController.getUserType(request, response);
-});
+        router.patch('/account/edit/:id', (request: Request, response: Response) => {
+            this.userController.updateUser(request, response);
+        });
 
-//Deletes the session of the logged in user
-router.delete('/users', (request: Request, response: Response) => {
-    Server.instance.sessionController.deleteSession(request, response);
-});
+        router.get('/account/:id', (request: Request, response: Response) => {
+            this.userController.getUserById(request, response);
+        });
 
-export default router;
+        router.get('/:id', (request: Request, response: Response) => {
+            this.userController.getUserType(request, response);
+        });
+
+        router.delete('/', (request: Request, response: Response) => {
+            this.sessionController.deleteSession(request, response);
+        });
+    }
+}

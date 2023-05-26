@@ -28,7 +28,7 @@ export namespace SessionBusiness {
          * Generates a session id.
          * @returns random string
          */
-        public generateSessionId(): string {
+        private generateSessionId(): string {
             return crypto.randomBytes(16).toString('hex');
         }
 
