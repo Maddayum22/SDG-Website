@@ -11,7 +11,7 @@ In this project I was responsible for the following parts:
 - The base OOP structure, Routing, Server setup, layers and classes.
 - The posts structure, from creating a post, to getting all the posts etc.
 - The session authentication and creation. Both the cookie management and saving the info in a database.
-- Testing for post and session structure.
+- Unit, Integration and E2E Testing for post and session structure.
 - Database configuration and other database management.
 - A lot of frontend work.
 - Setup for sequelize models.
