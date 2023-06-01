@@ -1,0 +1,33 @@
+<section id="homepageFeed">
+  <section id="feedHeader">
+    <h2>Talk about SDG!</h2>
+  </section>
+
+  <section id="posts">
+    <h2 id="noPostTitle" *ngIf="emptyPosts">No posts available</h2>
+    <ul id="postList" *ngIf="!emptyPosts">
+      <li class="postItem" *ngFor="let post of posts">
+        <section class="postCreator">
+          <img class="creatorImg" src="../../../assets/icon.png" />
+          <p class="postUserName">@{{ post.user!.username }}</p>
+          <p class="postUserExpertise">{{ post.user!.areaOfExpertise }}</p>
+        </section>
+        <section class="postContent">
+          <h2
+            class="postTitle"
+            [ngStyle]="{ 'background-color': sdgItem[post.sdgId][1] }"
+          >
+            {{ post.title }}
+          </h2>
+          <p class="postDescription">{{ post.description }}</p>
+          <p class="postSdg" [ngStyle]="{ color: sdgItem[post.sdgId][1] }">
+            {{ sdgItem[post.sdgId][0] }}
+          </p>
+          <p class="postExpertise">Expertise: {{ post.areaOfExpertise }}</p>
+          <p class="postDate">Posted: {{ splitDate(post.createdAt!) }}</p>
+          <button class="quizButton" (click)="quizPopup()">Take quiz</button>
+        </section>
+      </li>
+    </ul>
+  </section>
+</section>

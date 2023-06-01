@@ -1,0 +1,41 @@
+#information {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background-image: url(../../../assets/background.jpg);
+    border-radius: 20px;
+}
+
+#informationText {
+    height: 400px;
+}
+
+#informationText h2 {
+    color: white;
+    background-color: #29BEE3;
+    padding: 1rem 18rem;
+    border-radius: 1rem;
+    text-align: center;
+    filter: drop-shadow(0px 10px 4px rgba(0, 0, 0, 0.5));
+}
+
+#informationText pre {
+    color: black;
+    background-color: #D9D9D9;
+    padding: 1rem;
+    border-radius: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+}
+
+#informationText pre .highlight {
+    color: #183568;
+    font-weight: bold;
+}
+
+#gify {
+    height: 400px;
+    margin: 3rem;
+}
