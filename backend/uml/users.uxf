@@ -1,0 +1,134 @@
+<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>248</x><y>217</y><w>352</w><h>88</h></coordinates><panel_attributes>UserController
+--
+-userService: UserService
+--
++addUser(request: Request, response: Response): Promise&lt;void&gt;
++authenticateUser(request: Request, response: Response): Promise&lt;void&gt;
++getUserType(request: Request, response: Response): Promise&lt;void&gt;
++updateUser(request: Request, response: Response): Promise&lt;void&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>248</x><y>361</y><w>432</w><h>112</h></coordinates><panel_attributes>UserService
+--
+-userRepository: UserRepositoryInterface
+-sessionService: SessionService
+--
++getUserById(id: number): Promise&lt;User | null&gt;
++addUser(inputUser: UserInterface): Promise&lt;boolean&gt;
++updateUser(userId: number, userDetails: Partial&lt;User&gt;): Promise&lt;User | null&gt;
++authenticateUser(userInputEmail: string, userInputPassword: string): Promise&lt;string | null&gt;
++getUserType(userId: number): Promise&lt;User | null&gt;
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>144</x><y>953</y><w>376</w><h>88</h></coordinates><panel_attributes>SqlUserRepository
+--
++addUser(inputUser: UserInterface): Promise&lt;void&gt;
++getUserByEmail(userInputEmail: string): Promise&lt;UserBusiness.User | null&gt;
++getUserById(userId: number): Promise&lt;User | null&gt;
++getUserType(userId: number): Promise&lt;User | null&gt;
++updateUser(userId: number, userDetails: Partial&lt;User&gt;): Promise&lt;User | null&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>752</x><y>361</y><w>280</w><h>192</h></coordinates><panel_attributes>UserBusiness
+--
++username: string
++password: string
++emailAdress: string
++areaOfExpertise: AreaOfExpertise
++userType: UserType
+--
++isValid(inputUser: UserInterface): Promise&lt;boolean&gt;
+-containsSpecialChars(string: string): boolean
+-validateEmail(string: string): boolean
+-hasPasswordLength(string: string): boolean
+-containsEmptyString(string: string): boolean
+-hasWhiteSpace(string: string): boolean
+-validExpertise(string: string): boolean 
++verifyPassword(inputPassword: string): Promise&lt;boolean&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>672</x><y>361</y><w>96</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Uses
+</panel_attributes><additional_attributes>10;20;100;20</additional_attributes></element><element><id>Relation</id><coordinates><x>304</x><y>297</y><w>48</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Uses
+</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>568</x><y>953</y><w>376</w><h>88</h></coordinates><panel_attributes>UserRepository
+--
++addUser(userInput: UserInterface): Promise&lt;void&gt;
++getUserByEmail(userInputEmail: string): Promise&lt;UserBusiness.User| null&gt;
++getUserById(userId: number): Promise&lt;User | null&gt;
++getUserType(userId: number): Promise&lt;User | null&gt;
++updateUser(userId: number, userDetails: Partial&lt;User&gt;): Promise&lt;User | null&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>248</x><y>801</y><w>376</w><h>96</h></coordinates><panel_attributes>&lt;&lt;RepositoryInterface&gt;&gt;
+--
++addUser(user: User): Promise&lt;void&gt;
++getUserByEmail(userInputEmail: string): Promise&lt;User | null&gt;
++getUserById(userId: number): Promise&lt;User | null&gt;
++getUserType(userId: number): Promise&lt;User | null&gt;
++updateUser(userId: number, userDetails: Partial&lt;User&gt;): Promise&lt;User | null&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>304</x><y>465</y><w>48</w><h>352</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Uses
+</panel_attributes><additional_attributes>10;10;10;420</additional_attributes></element><element><id>UMLClass</id><coordinates><x>480</x><y>1105</y><w>168</w><h>160</h></coordinates><panel_attributes>&lt;&lt;UserInterface&gt;&gt;
+--
+id: number
+username: string
+firstName: string
+preposition: string
+lastName: string
+password: string
+emailAdress: string
+areaOfExpertise: AreaOfExpertise
+userType: UserType
+createdAt: string
+updatedAt: string</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>712</x><y>1105</y><w>128</w><h>32</h></coordinates><panel_attributes>UserModel</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>72</x><y>185</y><w>976</w><h>152</h></coordinates><panel_attributes>lt=.
+Controller
+fg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>72</x><y>337</y><w>976</w><h>424</h></coordinates><panel_attributes>lt=.
+Service
+fg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>72</x><y>761</y><w>976</w><h>568</h></coordinates><panel_attributes>lt=.
+Repository
+fg=red
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>104</x><y>361</y><w>88</w><h>32</h></coordinates><panel_attributes>SessionService
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>184</x><y>369</y><w>80</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Uses
+</panel_attributes><additional_attributes>80;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>816</x><y>585</y><w>168</w><h>160</h></coordinates><panel_attributes>&lt;&lt;UserInterface&gt;&gt;
+--
+id: number
+username: string
+firstName: string
+preposition: string
+lastName: string
+password: string
+emailAdress: string
+areaOfExpertise: AreaOfExpertise
+userType: UserType
+createdAt: string
+updatedAt: string</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>896</x><y>545</y><w>24</w><h>56</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Text</id><coordinates><x>904</x><y>561</y><w>32</w><h>24</h></coordinates><panel_attributes>Is-a</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>120</x><y>1105</y><w>280</w><h>192</h></coordinates><panel_attributes>UserBusiness
+--
++username: string
++password: string
++emailAdress: string
++areaOfExpertise: AreaOfExpertise
++userType: UserType
+--
++isValid(user: UserInterface): Promise&lt;boolean&gt;
+-containsSpecialChars(string: string): boolean
+-validateEmail(string: string): boolean
+-hasPasswordLength(string: string): boolean
+-containsEmptyString(string: string): boolean
+-hasWhiteSpace(string: string): boolean
+-validExpertise(string: string): boolean 
++verifyPassword(inputPassword: string): Promise&lt;boolean&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>312</x><y>889</y><w>88</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>90;10;90;50;10;50;10;80</additional_attributes></element><element><id>Text</id><coordinates><x>328</x><y>929</y><w>32</w><h>24</h></coordinates><panel_attributes>Is-a</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>648</x><y>929</y><w>32</w><h>24</h></coordinates><panel_attributes>Is-a</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>592</x><y>889</y><w>104</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;50;110;50;110;80</additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>1033</y><w>104</w><h>88</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Uses
+</panel_attributes><additional_attributes>110;10;110;50;10;50;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>440</x><y>1033</y><w>144</w><h>88</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Uses
+</panel_attributes><additional_attributes>10;10;10;50;160;50;160;90</additional_attributes></element><element><id>Text</id><coordinates><x>408</x><y>1137</y><w>32</w><h>24</h></coordinates><panel_attributes>Is-a</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>392</x><y>1153</y><w>104</w><h>56</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>110;10;10;10;10;50</additional_attributes></element><element><id>Text</id><coordinates><x>672</x><y>1145</y><w>32</w><h>24</h></coordinates><panel_attributes>Is-a</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>640</x><y>1129</y><w>120</w><h>48</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;40;130;40;130;10</additional_attributes></element><element><id>UMLNote</id><coordinates><x>616</x><y>233</y><w>192</w><h>56</h></coordinates><panel_attributes>In the route, a function in the controller 
+is called. The request will be sent to one 
+of the functions in the controller.
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>488</x><y>497</y><w>240</w><h>120</h></coordinates><panel_attributes>Firstly the requests of the UserController are 
+being recieved in the UserService. Depending on 
+the request, the request is going to be checked to 
+make sure it's valid. The checks are happening in 
+the UserBusiness. If everything is valid, the 
+UserService sends the request to the 
+UserRepository, and awaits a response. When the
+UserRepository returns a response, the response 
+will be sent back to the UserController.
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>1056</x><y>545</y><w>112</w><h>56</h></coordinates><panel_attributes>The UserBusiness User 
+class implements the 
+UserInterface.
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>664</x><y>817</y><w>312</w><h>56</h></coordinates><panel_attributes>The RepositoryInterface contains the structure that the SQL
+repository and the Sequelize repository implement. The SQL 
+and Sequelize queries are split in these two different repositories.
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>768</x><y>1161</y><w>240</w><h>32</h></coordinates><panel_attributes>The UserModel is imported into the repository. 
+This is how the user columns should be structured.
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>504</x><y>137</y><w>136</w><h>24</h></coordinates><panel_attributes>Authors: Madelief &amp; Rowen
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element></diagram>

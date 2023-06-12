@@ -1,0 +1,19 @@
+<!-- @author Madelief van Slooten -->
+<section id="footer">
+  <section id="logoSection">
+    <img id="sdg_logo" src="../assets/sdg_-_wheel_-_smaller_2-1.png" alt="" />
+    <img
+      id="hva_logo"
+      src="../assets/Hogeschool_van_amsterdam_logo.svg.png"
+      alt=""
+    />
+  </section>
+  <section id="footerLinks">
+    <ul id="footerList">
+      <li *ngFor="let link of footerContent()">
+        <!--Routerlinks wil be added later when the routes get added.-->
+        <a>{{ link }}</a>
+      </li>
+    </ul>
+  </section>
+</section>

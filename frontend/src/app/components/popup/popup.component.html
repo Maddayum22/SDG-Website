@@ -1,0 +1,9 @@
+<!-- 
+ @author Sven Molenaar
+ Popup Component HTML
+  -->
+<div [ngStyle]="getBackgroundStyle()" class="popup-Div">
+  <mat-dialog-content [ngStyle]="getMessageStyle()">
+    {{ data.message }}
+  </mat-dialog-content>
+</div>

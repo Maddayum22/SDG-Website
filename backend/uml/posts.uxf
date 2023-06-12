@@ -1,0 +1,142 @@
+<diagram program="umletino" version="15.1"><zoom_level>7</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>238</x><y>280</y><w>266</w><h>56</h></coordinates><panel_attributes>PostController
+--
+-postService: PostService
+--
++create(request: Request, response: Response): Promise&lt;void&gt;
++findAll(request: Request, response: Response): Promise&lt;void&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>91</x><y>385</y><w>196</w><h>70</h></coordinates><panel_attributes>PostService
+--
+- postRepository: PostRepositoryInterface
+--
++create(post: PostInterface): Promise&lt;boolean&gt;
++findAll(): Promise&lt;PostInterface[]&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>175</x><y>630</y><w>196</w><h>42</h></coordinates><panel_attributes>SqlPostRepository
+--
++create(post: PostInterface): Promise&lt;boolean&gt;
++findAll(): Promise&lt;PostInterface[]&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>329</x><y>385</y><w>224</w><h>91</h></coordinates><panel_attributes>PostBusiness
+--
++userId: number
++title: string
++description: string
++sdgId: number
++areaOfExpertise: AreaOfExpertise
+--
+-validatePost(title: string, description: string): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>280</x><y>385</y><w>63</w><h>35</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Uses
+</panel_attributes><additional_attributes>10;20;70;20</additional_attributes></element><element><id>Relation</id><coordinates><x>175</x><y>329</y><w>133</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Uses
+</panel_attributes><additional_attributes>170;10;170;50;10;50;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>406</x><y>623</y><w>203</w><h>56</h></coordinates><panel_attributes>PostRepository
+--
++create(post: PostInterface): Promise&lt;boolean&gt;
++findAll(): Promise&lt;PostInterface[]&gt;
+-formatPost(post: Post): PostInterface</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>238</x><y>532</y><w>203</w><h>49</h></coordinates><panel_attributes>&lt;&lt;RepositoryInterface&gt;&gt;
+--
++create(post: PostInterface): Promise&lt;boolean&gt;
++findAll(): Promise&lt;PostInterface[]&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>168</x><y>441</y><w>140</w><h>105</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Uses
+</panel_attributes><additional_attributes>10;10;10;60;180;60;180;130</additional_attributes></element><element><id>Relation</id><coordinates><x>217</x><y>574</y><w>77</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>90;10;90;50;10;50;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>301</x><y>574</y><w>175</w><h>63</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;50;230;50;230;70</additional_attributes></element><element><id>Text</id><coordinates><x>427</x><y>588</y><w>28</w><h>21</h></coordinates><panel_attributes>Is-a</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>231</x><y>609</y><w>28</w><h>21</h></coordinates><panel_attributes>Is-a</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>343</x><y>693</y><w>147</w><h>140</h></coordinates><panel_attributes>&lt;&lt;PostInterface&gt;&gt;
+--
++id: number
++userId: number
++title: string
++description: string
++image: string
++likes: number
++sdgId: number
++areaOfExpertise: AreaOfExpertise
++createdAt: string
++updatedAt: string
++user: User</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>245</x><y>665</y><w>112</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Uses
+</panel_attributes><additional_attributes>10;10;10;70;140;70</additional_attributes></element><element><id>Relation</id><coordinates><x>483</x><y>672</y><w>77</w><h>63</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Uses
+</panel_attributes><additional_attributes>60;10;60;60;10;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>511</x><y>784</y><w>112</w><h>28</h></coordinates><panel_attributes>PostModel</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>483</x><y>756</y><w>98</w><h>42</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;120;10;120;40</additional_attributes></element><element><id>Relation</id><coordinates><x>217</x><y>756</y><w>140</w><h>42</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>180;10;10;10;10;40</additional_attributes></element><element><id>Text</id><coordinates><x>280</x><y>749</y><w>28</w><h>21</h></coordinates><panel_attributes>Is-a</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>84</x><y>259</y><w>679</w><h>91</h></coordinates><panel_attributes>lt=.
+Controller
+fg=blue
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>84</x><y>504</y><w>679</w><h>385</h></coordinates><panel_attributes>lt=.
+Repository
+fg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>105</x><y>784</y><w>224</w><h>91</h></coordinates><panel_attributes>PostBusiness
+--
++userId: number
++title: string
++description: string
++sdgId: number
++areaOfExpertise: AreaOfExpertise
+--
+-validatePost(title: string, description: string): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>539</x><y>749</y><w>28</w><h>21</h></coordinates><panel_attributes>Is-a</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>595</x><y>364</y><w>147</w><h>133</h></coordinates><panel_attributes>&lt;&lt;PostInterface&gt;&gt;
+--
++id: number
++userId: number
++title: string
++description: string
++image: string
++likes: number
++sdgId: number
++areaOfExpertise: AreaOfExpertise
++createdAt: string
++updatedAt: string
++user: User</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>546</x><y>413</y><w>63</w><h>21</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;70;10</additional_attributes></element><element><id>Text</id><coordinates><x>567</x><y>399</y><w>28</w><h>21</h></coordinates><panel_attributes>Is-a</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>763</x><y>259</y><w>245</w><h>91</h></coordinates><panel_attributes>PostController
+Controller class that uses the post Service 
+class it controlls requests for the create 
+posts, and findAll posts
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>763</x><y>504</y><w>245</w><h>385</h></coordinates><panel_attributes>PostInterface:
+The PostInterface defines the shape of a 
+post object, specifying its properties and types
+
+PostBusiness:
+The PostBusiness layer encapsulates the business
+logic for posts, including validation and creation, 
+providing a higher-level abstraction for working 
+with post objects.
+
+RepositoryInterface:
+The PostRepositoryInterface defines the required 
+methods for interacting with post data, including 
+creating new posts and retrieving all posts. 
+It serves as a blueprint for implementing repositories 
+that handle post-related database operations.
+
+PostModel:
+The PostModel represents a post entity in the
+database, with columns for properties  It is used 
+for defining the structure and behavior of post 
+data in the application's data layer.
+
+PostRepository:
+This class implements the PostRepositoryInterface 
+by providing an SQL-based implementation of the 
+repository methods for managing post data.
+It includes methods to fetch all posts from the database 
+and create a new post with user relationship, 
+utilizing the Database connection and transforming 
+the retrieved data into the desired PostInterface format.
+
+SqlPostRepository:
+this Class implements the PostRepositoryInterface 
+by providing a repository class for managing post data. 
+It includes methods to create a new post with a user 
+relationship and fetch all posts from the database, 
+utilizing the Post model and transforming the 
+retrieved data into the desired PostInterface format.
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>763</x><y>350</y><w>245</w><h>154</h></coordinates><panel_attributes>PostInterface:
+The PostInterface defines the shape of a post object, 
+specifying its properties and types
+
+PostBusiness:
+The PostBusiness layer encapsulates the business 
+logic for posts, including post-validation and post-creation
+
+PostService:
+The PostService is responsible for handling the
+business logic related to posts. It provides 
+methods to create new posts and retrieve all posts 
+from the repository layer. It ensures that the posts 
+are valid before interacting with the repository, 
+and handles any errors that may occur during the 
+process.Post service that handles the repositories
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>84</x><y>350</y><w>679</w><h>154</h></coordinates><panel_attributes>lt=.
+Service
+fg=yellow
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>378</x><y>203</y><w>161</w><h>35</h></coordinates><panel_attributes>Authors
+Madelief Van Slooten
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>805</x><y>203</y><w>161</w><h>35</h></coordinates><panel_attributes>Authors
+Sven Molenaar
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element></diagram>

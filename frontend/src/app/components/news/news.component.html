@@ -1,0 +1,26 @@
+<!-- @author Madelief van Slooten -->
+<section id="homepageFeed">
+  <section id="feedHeader">
+    <h2>SDG News</h2>
+  </section>
+  <section id="newsArticles">
+    <ul id="newsList">
+      <li id="newsItem" *ngFor="let news of newsArticles">
+        <a id="newsLink" href="{{ news.link }}" target="_blank">
+          <section id="image">
+            <img id="sdgImg" src="{{ news.sdg }}" />
+          </section>
+          <section id="newsContent">
+            <section id="titleDescription">
+              <h2 id="newsTitle">
+                {{ news.title }}
+              </h2>
+              <p id="description">{{ news.description }}</p>
+            </section>
+            <p class="postDate">Posted: {{ news.date }}</p>
+          </section>
+        </a>
+      </li>
+    </ul>
+  </section>
+</section>

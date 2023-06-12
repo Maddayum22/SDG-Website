@@ -1,0 +1,16 @@
+<section id="container">
+  <section class="sdgItem" *ngFor="let sdg of sdgs">
+    <section
+      class="sdgTitle"
+      (click)="showInformation(sdg)"
+      (click)="rotate(sdg)"
+    >
+      <img [src]="sdg.sdgImage" />
+      <p>{{ sdg.name }}</p>
+      <img [src]="sdg.arrowImage" id="arrow" [@rotatedState]="sdg.state" />
+    </section>
+    <section class="sdgInformation" *ngIf="isSdgOpened[sdg.id]">
+      <p>{{ sdg.information }}</p>
+    </section>
+  </section>
+</section>
