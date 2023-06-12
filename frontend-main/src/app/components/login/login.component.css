@@ -1,0 +1,107 @@
+/* @author Sven Molenaar
+ * and some help from Rowen 
+ * Login Component Styling*/
+
+ .container{
+    padding:20px;
+}
+
+#login {
+    offset-distance: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 500px;
+    padding: 5rem;
+    margin-bottom: 10rem;
+    background-image: url(../../../assets/background.jpg);
+    border-radius: 20px;
+    margin-left: 0.5rem;
+}
+
+#loginTitle {
+    filter: drop-shadow(0px 10px 4px rgba(0, 0, 0, 0.5));
+    margin-bottom: 1rem;
+}
+
+#loginTitle h2 {
+    color: #fff;
+    background: #02558B;
+    padding: 1rem 18rem;
+    border-radius: 1rem;
+}
+
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+#row1{
+    display: flex;
+    width: 100%;
+}
+
+#row2{
+    display: flex;
+    width: 100%;
+    justify-content:space-around;
+}
+
+label {
+    width: 100%;
+    display: inline-block;
+    background-color: #EBEBEB;
+    border-radius: 0.5rem 0.5rem 0 0;
+    padding: 0.5rem
+}
+
+#emailField, #passwordField{
+    position: relative;
+    min-width: 50%;
+    padding: 1rem;
+}
+#linkField{
+    position: relative;
+    min-width: 50%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+    
+}
+
+#linkField a {
+    color: #000;
+    background: white;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+}
+
+#linkField a:hover {
+    background: #e6e6e6;
+}
+
+a:link { text-decoration: none; }
+a:visited { text-decoration: none; }
+a:hover { text-decoration: none; }
+a:active { text-decoration: none; }
+input{
+    width: 100%;
+    padding: 0.8rem 0.5rem;
+    border: none;
+}
+
+#loginButton {
+    color: #fff;
+    background-color: #5DBA45;
+    padding: 1rem;
+    font-size: large;
+    border-radius: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+#loginButton:hover {
+    background-color: #4D9B3A;
+}

@@ -1,0 +1,79 @@
+<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><element><id>UMLClass</id><coordinates><x>183</x><y>24</y><w>304</w><h>64</h></coordinates><panel_attributes>PostController
+--
+-postService: PostService
+--
++create(request: Request, response: Response): Promise&lt;void&gt;
++findAll(request: Request, response: Response): Promise&lt;void&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>143</x><y>144</y><w>224</w><h>72</h></coordinates><panel_attributes>PostService
+--
+- postRepository: PostRepositoryInterface
+--
++create(post: PostInterface): Promise&lt;boolean&gt;
++findAll(): Promise&lt;PostInterface[]&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>111</x><y>424</y><w>224</w><h>48</h></coordinates><panel_attributes>SqlPostRepository
+--
++create(post: PostInterface): Promise&lt;boolean&gt;
++findAll(): Promise&lt;PostInterface[]&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>431</x><y>144</y><w>256</w><h>104</h></coordinates><panel_attributes>PostBusiness
+--
++userId: number
++title: string
++description: string
++sdgId: number
++areaOfExpertise: AreaOfExpertise
+--
+-validatePost(title: string, description: string): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>359</x><y>144</y><w>88</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Uses
+</panel_attributes><additional_attributes>10;20;90;20</additional_attributes></element><element><id>Relation</id><coordinates><x>239</x><y>80</y><w>48</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Uses
+</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>375</x><y>416</y><w>232</w><h>64</h></coordinates><panel_attributes>PostRepository
+--
++create(post: PostInterface): Promise&lt;boolean&gt;
++findAll(): Promise&lt;PostInterface[]&gt;
+-formatPost(post: Post): PostInterface</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>183</x><y>312</y><w>232</w><h>56</h></coordinates><panel_attributes>&lt;&lt;RepositoryInterface&gt;&gt;
+--
++create(post: PostInterface): Promise&lt;boolean&gt;
++findAll(): Promise&lt;PostInterface[]&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>239</x><y>208</y><w>48</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Uses
+</panel_attributes><additional_attributes>10;10;10;130</additional_attributes></element><element><id>Relation</id><coordinates><x>159</x><y>360</y><w>88</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>90;10;90;50;10;50;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>255</x><y>360</y><w>200</w><h>72</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;50;230;50;230;70</additional_attributes></element><element><id>Text</id><coordinates><x>399</x><y>376</y><w>32</w><h>24</h></coordinates><panel_attributes>Is-a</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>175</x><y>400</y><w>32</w><h>24</h></coordinates><panel_attributes>Is-a</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>303</x><y>496</y><w>168</w><h>160</h></coordinates><panel_attributes>&lt;&lt;PostInterface&gt;&gt;
+--
++id: number
++userId: number
++title: string
++description: string
++image: string
++likes: number
++sdgId: number
++areaOfExpertise: AreaOfExpertise
++createdAt: string
++updatedAt: string
++user: User</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>191</x><y>464</y><w>128</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Uses
+</panel_attributes><additional_attributes>10;10;10;70;140;70</additional_attributes></element><element><id>Relation</id><coordinates><x>463</x><y>472</y><w>88</w><h>72</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+Uses
+</panel_attributes><additional_attributes>60;10;60;60;10;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>495</x><y>600</y><w>128</w><h>32</h></coordinates><panel_attributes>PostModel</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>463</x><y>568</y><w>112</w><h>48</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;120;10;120;40</additional_attributes></element><element><id>Relation</id><coordinates><x>159</x><y>568</y><w>160</w><h>48</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>180;10;10;10;10;40</additional_attributes></element><element><id>Text</id><coordinates><x>231</x><y>560</y><w>32</w><h>24</h></coordinates><panel_attributes>Is-a</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>7</x><y>0</y><w>704</w><h>104</h></coordinates><panel_attributes>lt=.
+Controller
+fg=blue
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>7</x><y>104</y><w>704</w><h>176</h></coordinates><panel_attributes>lt=.
+Service
+fg=yellow
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>7</x><y>280</y><w>704</w><h>440</h></coordinates><panel_attributes>lt=.
+Repository
+fg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>31</x><y>600</y><w>256</w><h>104</h></coordinates><panel_attributes>PostBusiness
+--
++userId: number
++title: string
++description: string
++sdgId: number
++areaOfExpertise: AreaOfExpertise
+--
+-validatePost(title: string, description: string): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>527</x><y>560</y><w>32</w><h>24</h></coordinates><panel_attributes>Is-a</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>743</x><y>120</y><w>168</w><h>160</h></coordinates><panel_attributes>&lt;&lt;PostInterface&gt;&gt;
+--
++id: number
++userId: number
++title: string
++description: string
++image: string
++likes: number
++sdgId: number
++areaOfExpertise: AreaOfExpertise
++createdAt: string
++updatedAt: string
++user: User</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>679</x><y>176</y><w>80</w><h>24</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;80;10</additional_attributes></element><element><id>Text</id><coordinates><x>711</x><y>160</y><w>32</w><h>24</h></coordinates><panel_attributes>Is-a</panel_attributes><additional_attributes></additional_attributes></element></diagram>
